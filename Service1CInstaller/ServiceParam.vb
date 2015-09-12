@@ -198,7 +198,7 @@ Public Class ServiceParam
 
         Dim PathName = """" + ExeFile.Text + """ {0} -srvc -agent -regport {1} -port {2} -range {3}:{4} -d ""{5}"""
 
-        PathName = String.Format(PathName, IIf(CheckBoxDebug.Checked, "-debug", ""), PortMngr.Text, _
+        PathName = String.Format(PathName, IIf(CheckBoxDebug.Checked, "-debug", ""), PortMngr.Text,
                                  PortAgent.Text, PortProcessBegin.Text, PortProcessEnd.Text, ClusterFiles.Text)
 
 
@@ -228,7 +228,7 @@ Public Class ServiceParam
             If Not ObjTec.Services.ServiceInstaller.InstallService(PathName, ServName, DisplayName.Text, lpDependencies, User, Pwd) Then
 
                 Dim ErrorCode = Marshal.GetLastWin32Error()
-                MsgBox("Ошибка установки сервиса " + Form1.GetErrorDescription(ErrorCode), , Text)
+                MsgBox("Ошибка установки сервиса " + Form1.GetErrorDescription(ErrorCode), MsgBoxStyle.Critical, Text)
 
             End If
 
@@ -239,7 +239,7 @@ Public Class ServiceParam
                 If sc.Status = ServiceProcess.ServiceControllerStatus.Running Then
                     ' sc.Stop()
                     'MsgBox("Параметры существующей службы успешно изменены")
-                    If MsgBox("Параметры успешно изменены, но служба в настоящий момент работает." + _
+                    If MsgBox("Параметры успешно изменены, но служба в настоящий момент работает." +
                               vbNewLine + "Перезапустить службу для применения изменений?", MsgBoxStyle.YesNo, Text) = MsgBoxResult.Yes Then
                         sc.Stop()
                         sc.WaitForStatus(ServiceProcess.ServiceControllerStatus.Stopped)
@@ -250,7 +250,7 @@ Public Class ServiceParam
                 End If
             Else
                 Dim ErrorCode = Marshal.GetLastWin32Error()
-                MsgBox("Ошибка изменения параметров сервиса " + Form1.GetErrorDescription(ErrorCode), , Text)
+                MsgBox("Ошибка изменения параметров сервиса " + Form1.GetErrorDescription(ErrorCode), MsgBoxStyle.Critical, Text)
             End If
 
         End If
@@ -262,25 +262,8 @@ Public Class ServiceParam
 
     End Sub
 
-
-
     Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
         Close()
     End Sub
 
-
-
-
-
-    Private Sub TechUser_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
-
-    End Sub
-
-    Private Sub RadioButtonUser1_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RadioButtonUser1.CheckedChanged
-
-    End Sub
-
-    Private Sub Label5_Click(sender As System.Object, e As System.EventArgs) Handles Label5.Click
-
-    End Sub
 End Class

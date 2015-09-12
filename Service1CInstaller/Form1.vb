@@ -577,8 +577,8 @@ Public Class Form1
 
         If Not UserHaveAccess Then
 
-            MsgBox("Программа запущена без административных прав." + _
-                   vbNewLine + "Управление службами будет невозможно.", , Text)
+            MsgBox("Программа запущена без административных прав." +
+                   vbNewLine + "Управление службами будет невозможно.", MsgBoxStyle.Information, Text)
 
         End If
 
