@@ -2,9 +2,36 @@
 Imports Microsoft.Win32
 Imports System.IO
 Imports System.Runtime.InteropServices
+Imports System.Text
 
 Public Class Form1
 
+    <DllImport("msi.dll", SetLastError:=True)>
+    Private Shared Function MsiEnumProducts(iProductIndex As Integer, lpProductBuf As StringBuilder) As Integer
+    End Function
+
+    Declare Auto Function MsiGetProductInfo Lib "msi.dll" (ByVal product As String, ByVal [property] As String,
+         <MarshalAs(UnmanagedType.VBByRefStr)> ByRef valueBuf As String, ByRef len As Long) As Int32
+
+
+    Public Enum MSI_ERROR As Integer
+        ERROR_SUCCESS = 0
+        ERROR_MORE_DATA = 234
+        ERROR_NO_MORE_ITEMS = 259
+        ERROR_INVALID_PARAMETER = 87
+        ERROR_BAD_CONFIGURATION = 1610
+    End Enum
+
+    Structure InstalledServices
+        Dim ProductType As String
+        Dim ProductName As String
+        Dim InstallLocation As String
+        Dim ExePath As String
+        Dim ProductID As String
+        Dim ProductVersion As String
+    End Structure
+
+    Dim ListInstalledServices As List(Of InstalledServices) = New List(Of InstalledServices)
 
     Class Service
         Public Name As String
@@ -165,6 +192,8 @@ Public Class Form1
 
         RefreshListService()
 
+        GetListOfAllInstalledPlatforms()
+
     End Sub
 
     Sub RefreshListService()
@@ -296,10 +325,16 @@ Public Class Form1
 
         Else
 
-            Dim ClusterForm = New ServiceParam
-            ClusterForm.ItsAdd = True
-            ClusterForm.Serv = New Service
-            ClusterForm.ShowDialog()
+            'Dim ClusterForm = New ServiceParam
+            'ClusterForm.ItsAdd = True
+            'ClusterForm.Serv = New Service
+            'ClusterForm.FullServiceList = ListInstalledServices
+            'ClusterForm.ShowDialog()
+
+            Dim AddNewService = New AvailableServices
+            AddNewService.FullServiceList = ListInstalledServices
+            AddNewService.ShowDialog()
+
 
         End If
 
@@ -326,7 +361,7 @@ Public Class Form1
 
                 If Serv.DisplayName = Item.SubItems(0).Text Then
 
-                    Dim Rez = MsgBox("Вы действительно хотите удалить службу сервера 1С " + vbNewLine + _
+                    Dim Rez = MsgBox("Вы действительно хотите удалить службу сервера 1С " + vbNewLine +
                                      """" + Serv.DisplayName + """ ?", MsgBoxStyle.YesNo, "УДАЛЕНИЕ службы сервера 1С")
 
                     If Rez = MsgBoxResult.Yes Then
@@ -353,7 +388,7 @@ Public Class Form1
                             MsgBox("При удалении службы произошла ошибка: " + GetErrorDescription(ErrorCode), , Text)
                         Else
                             If StopError Then
-                                MsgBox("Операция удаления прошла успешно, но службу остановить не удалось." + vbNewLine + _
+                                MsgBox("Операция удаления прошла успешно, но службу остановить не удалось." + vbNewLine +
                                        "Она исчезнет из списка установленных служб после остановки вручную или перезагрузки.", , Text)
                             End If
                         End If
@@ -404,11 +439,6 @@ Public Class Form1
 
     End Sub
 
-
-
-    Private Sub GroupBox1_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox1.Enter
-
-    End Sub
 
     Sub ChangeStatusService(Serv As Service, Operation As String)
 
@@ -581,6 +611,96 @@ Public Class Form1
                    vbNewLine + "Управление службами будет невозможно.", MsgBoxStyle.Information, Text)
 
         End If
+
+    End Sub
+
+    Function GetProductProperty(productID As String, sProperty As String) As String
+
+        Dim lsIKC As String = New String(" ", 255)
+        Dim liLen As Integer = 255
+        MsiGetProductInfo(productID, sProperty, lsIKC, liLen)
+
+        Return lsIKC.Substring(0, liLen).Trim
+
+    End Function
+
+    Sub AddAccesibleServices(InstallLocation As String, ProductName As String)
+
+
+        Dim FileServer1C = My.Computer.FileSystem.GetFileInfo(Path.Combine(InstallLocation, "bin\ragent.exe"))
+        If FileServer1C.Exists Then
+
+            Dim myFileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(FileServer1C.FullName)
+
+            Dim Service1C = New InstalledServices
+            Service1C.InstallLocation = InstallLocation
+            Service1C.ProductType = "AppServer"
+            Service1C.ProductName = ProductName
+            Service1C.ProductVersion = myFileVersionInfo.ProductVersion
+            Service1C.ExePath = FileServer1C.FullName
+
+            ListInstalledServices.Add(Service1C)
+
+        End If
+
+        Dim FileServerRepo = My.Computer.FileSystem.GetFileInfo(Path.Combine(InstallLocation, "bin\crserver.exe"))
+        If FileServerRepo.Exists Then
+
+            Dim myFileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(FileServerRepo.FullName)
+
+            Dim Service1C = New InstalledServices
+            Service1C.InstallLocation = InstallLocation
+            Service1C.ProductType = "CRServer"
+            Service1C.ProductName = ProductName
+            Service1C.ProductVersion = myFileVersionInfo.ProductVersion
+            Service1C.ExePath = FileServerRepo.FullName
+
+            ListInstalledServices.Add(Service1C)
+
+        End If
+
+        Dim FileServerRas = My.Computer.FileSystem.GetFileInfo(Path.Combine(InstallLocation, "bin\ras.exe"))
+        If FileServerRas.Exists Then
+
+            Dim myFileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(FileServerRas.FullName)
+
+            Dim Service1C = New InstalledServices
+            Service1C.InstallLocation = InstallLocation
+            Service1C.ProductType = "RASServer"
+            Service1C.ProductName = ProductName
+            Service1C.ProductVersion = myFileVersionInfo.ProductVersion
+            Service1C.ExePath = FileServerRas.FullName
+
+            ListInstalledServices.Add(Service1C)
+
+        End If
+
+    End Sub
+
+    Sub GetListOfAllInstalledPlatforms()
+
+        Dim sb As New StringBuilder(39)
+        Dim [error] As MSI_ERROR = MSI_ERROR.ERROR_SUCCESS
+        Dim index As Integer = 0
+        While [error] = MSI_ERROR.ERROR_SUCCESS
+            [error] = CType(MsiEnumProducts(index, sb), MSI_ERROR)
+            Dim productID As String = sb.ToString()
+            If [error] = MSI_ERROR.ERROR_SUCCESS Then
+                'Console.WriteLine("ProductID=" & productID)
+
+                Dim a1 = GetProductProperty(productID, "Publisher")
+                If a1 = "1C" Then
+
+                    Dim InstallLocation = GetProductProperty(productID, "InstallLocation")
+                    Dim ProductName = GetProductProperty(productID, "ProductName")
+
+                    AddAccesibleServices(InstallLocation, ProductName)
+
+                End If
+
+            End If
+            index += 1
+        End While
 
     End Sub
 

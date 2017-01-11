@@ -8,19 +8,20 @@ Imports System.Runtime.InteropServices
 
 ' Проверьте значения атрибутов сборки
 
-<Assembly: AssemblyTitle("Управление службами сервера 1С")>
-<Assembly: AssemblyDescription("Управление составом служб сервера 1С:Предприятие 8" +
-             vbNewLine + "" +
+<Assembly: AssemblyTitle("Управление службами 1С:Предприятие 8")>
+<Assembly: AssemblyDescription("Управление службами 1С:Предприятие 8" +
+             vbNewLine + "Исходные коды - https://github.com/alekseybochkov/ServiceInstaller1C" +
+             vbNewLine + "Опубликовано по лицензии GNU GPL." +
              vbNewLine + "Страница приложения для обратной связи - http://infostart.ru/public/178238/")>
 <Assembly: AssemblyCompany("ALP Group")>
-<Assembly: AssemblyProduct("Управление службами сервера 1С")>
-<Assembly: AssemblyCopyright("Copyright © Aleksey.Bochkov, 2013")>
+<Assembly: AssemblyProduct("Управление службами 1С:Предприятие 8")>
+<Assembly: AssemblyCopyright("Copyright © Aleksey.Bochkov, 2013-2017")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-<Assembly: Guid("eb00c700-a308-4c2e-be2a-ddfcd0599e73")> 
+<Assembly: Guid("eb00c700-a308-4c2e-be2a-ddfcd0599e73")>
 
 ' Сведения о версии сборки состоят из следующих четырех значений:
 '
@@ -33,5 +34,5 @@ Imports System.Runtime.InteropServices
 ' используя "*", как показано ниже:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.5")> 
-<Assembly: AssemblyFileVersion("1.0.0.5")> 
+<Assembly: AssemblyVersion("2.0.0.1")>
+<Assembly: AssemblyFileVersion("2.0.0.1")>

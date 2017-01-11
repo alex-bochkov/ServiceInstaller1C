@@ -9,6 +9,7 @@ Public Class ServiceParam
 
     Private Sub ServiceParam_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
+        ServiceName.Text = Serv.Name
         ExeFile.Text = Serv.ExeFile
         ClusterFiles.Text = Serv.ClusterFiles
         PortAgent.Text = Serv.PortAgent
@@ -47,6 +48,9 @@ Public Class ServiceParam
         ElseIf ItsEdit Then
             Text = "Изменение параметров существующей службы сервера 1С"
         End If
+
+
+
 
     End Sub
 
@@ -265,5 +269,6 @@ Public Class ServiceParam
     Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
         Close()
     End Sub
+
 
 End Class

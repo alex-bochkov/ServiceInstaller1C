@@ -124,8 +124,8 @@ Namespace ObjTec.Services
                 Dim svc_hndl As IntPtr = NativeMethods.OpenService(sc_hndl, svcName, SC_MANAGER_ALL_ACCESS)
                 If svc_hndl.ToInt32() <> 0 Then
 
-                    Dim i As Integer = NativeMethods.ChangeServiceConfig(svc_hndl, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START, _
-                                        SERVICE_ERROR_NORMAL, svcPath, Nothing, 0, lpDependencies, User, IIf(Password = "", Nothing, Password), svcDispName)
+                    Dim i As Integer = NativeMethods.ChangeServiceConfig(svc_hndl, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START,
+                                        SERVICE_ERROR_NORMAL, svcPath, Nothing, 0, lpDependencies, IIf(User = "", Nothing, User), IIf(Password = "", Nothing, Password), svcDispName)
                     ''ErrorCode = i
                     NativeMethods.CloseServiceHandle(svc_hndl)
                     If i <> 0 Then

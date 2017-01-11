@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ServiceParam
     Inherits System.Windows.Forms.Form
 
     'Форма переопределяет dispose для очистки списка компонентов.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ServiceParam
     'Примечание: следующая процедура является обязательной для конструктора форм Windows Forms
     'Для ее изменения используйте конструктор форм Windows Form.  
     'Не изменяйте ее в редакторе исходного кода.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ServiceParam))
         Me.Button3 = New System.Windows.Forms.Button()
@@ -47,12 +47,14 @@ Partial Class ServiceParam
         Me.ButtonSave = New System.Windows.Forms.Button()
         Me.RadioButtonUser1 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RadioButtonUser2 = New System.Windows.Forms.RadioButton()
-        Me.Login = New System.Windows.Forms.TextBox()
-        Me.Password = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Password = New System.Windows.Forms.TextBox()
+        Me.Login = New System.Windows.Forms.TextBox()
+        Me.RadioButtonUser2 = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ServiceName = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -87,7 +89,7 @@ Partial Class ServiceParam
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 6)
+        Me.Label6.Location = New System.Drawing.Point(7, 44)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(149, 13)
         Me.Label6.TabIndex = 11
@@ -96,7 +98,7 @@ Partial Class ServiceParam
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(8, 45)
+        Me.Label1.Location = New System.Drawing.Point(8, 83)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(152, 13)
         Me.Label1.TabIndex = 11
@@ -123,14 +125,14 @@ Partial Class ServiceParam
         'DisplayName
         '
         Me.DisplayName.BackColor = System.Drawing.SystemColors.Window
-        Me.DisplayName.Location = New System.Drawing.Point(5, 22)
+        Me.DisplayName.Location = New System.Drawing.Point(5, 60)
         Me.DisplayName.Name = "DisplayName"
         Me.DisplayName.Size = New System.Drawing.Size(531, 20)
         Me.DisplayName.TabIndex = 9
         '
         'ExeFile
         '
-        Me.ExeFile.Location = New System.Drawing.Point(5, 61)
+        Me.ExeFile.Location = New System.Drawing.Point(5, 99)
         Me.ExeFile.Name = "ExeFile"
         Me.ExeFile.Size = New System.Drawing.Size(454, 20)
         Me.ExeFile.TabIndex = 9
@@ -146,7 +148,7 @@ Partial Class ServiceParam
         '
         'ClusterFiles
         '
-        Me.ClusterFiles.Location = New System.Drawing.Point(5, 97)
+        Me.ClusterFiles.Location = New System.Drawing.Point(5, 135)
         Me.ClusterFiles.Name = "ClusterFiles"
         Me.ClusterFiles.Size = New System.Drawing.Size(454, 20)
         Me.ClusterFiles.TabIndex = 9
@@ -154,7 +156,7 @@ Partial Class ServiceParam
         'CheckBoxDebug
         '
         Me.CheckBoxDebug.AutoSize = True
-        Me.CheckBoxDebug.Location = New System.Drawing.Point(10, 252)
+        Me.CheckBoxDebug.Location = New System.Drawing.Point(10, 290)
         Me.CheckBoxDebug.Name = "CheckBoxDebug"
         Me.CheckBoxDebug.Size = New System.Drawing.Size(185, 17)
         Me.CheckBoxDebug.TabIndex = 12
@@ -163,7 +165,7 @@ Partial Class ServiceParam
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(465, 59)
+        Me.Button6.Location = New System.Drawing.Point(465, 97)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(71, 23)
         Me.Button6.TabIndex = 10
@@ -181,7 +183,7 @@ Partial Class ServiceParam
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(465, 95)
+        Me.Button1.Location = New System.Drawing.Point(465, 133)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(71, 23)
         Me.Button1.TabIndex = 10
@@ -200,7 +202,7 @@ Partial Class ServiceParam
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 81)
+        Me.Label2.Location = New System.Drawing.Point(8, 119)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(139, 13)
         Me.Label2.TabIndex = 11
@@ -225,7 +227,7 @@ Partial Class ServiceParam
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.Button4.Image = Global.Service1CInstaller.My.Resources.Resources._stop
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(275, 275)
+        Me.Button4.Location = New System.Drawing.Point(275, 313)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(261, 48)
         Me.Button4.TabIndex = 3
@@ -238,7 +240,7 @@ Partial Class ServiceParam
         Me.ButtonSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.ButtonSave.Image = Global.Service1CInstaller.My.Resources.Resources.save_all
         Me.ButtonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.ButtonSave.Location = New System.Drawing.Point(5, 275)
+        Me.ButtonSave.Location = New System.Drawing.Point(5, 313)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(264, 48)
         Me.ButtonSave.TabIndex = 3
@@ -249,7 +251,7 @@ Partial Class ServiceParam
         'RadioButtonUser1
         '
         Me.RadioButtonUser1.AutoSize = True
-        Me.RadioButtonUser1.Location = New System.Drawing.Point(17, 19)
+        Me.RadioButtonUser1.Location = New System.Drawing.Point(17, 29)
         Me.RadioButtonUser1.Name = "RadioButtonUser1"
         Me.RadioButtonUser1.Size = New System.Drawing.Size(129, 17)
         Me.RadioButtonUser1.TabIndex = 15
@@ -265,57 +267,57 @@ Partial Class ServiceParam
         Me.GroupBox1.Controls.Add(Me.Login)
         Me.GroupBox1.Controls.Add(Me.RadioButtonUser2)
         Me.GroupBox1.Controls.Add(Me.RadioButtonUser1)
-        Me.GroupBox1.Location = New System.Drawing.Point(275, 123)
+        Me.GroupBox1.Location = New System.Drawing.Point(275, 161)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(261, 123)
         Me.GroupBox1.TabIndex = 16
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Вход от имени"
+        Me.GroupBox1.Text = "Вход от имени (можно не указывать для существующей службы)"
         '
-        'RadioButtonUser2
+        'Label9
         '
-        Me.RadioButtonUser2.AutoSize = True
-        Me.RadioButtonUser2.Location = New System.Drawing.Point(17, 42)
-        Me.RadioButtonUser2.Name = "RadioButtonUser2"
-        Me.RadioButtonUser2.Size = New System.Drawing.Size(161, 17)
-        Me.RadioButtonUser2.TabIndex = 15
-        Me.RadioButtonUser2.TabStop = True
-        Me.RadioButtonUser2.Text = "Отдельной учетной записи"
-        Me.RadioButtonUser2.UseVisualStyleBackColor = True
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(32, 101)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(45, 13)
+        Me.Label9.TabIndex = 17
+        Me.Label9.Text = "Пароль"
         '
-        'Login
+        'Label8
         '
-        Me.Login.Location = New System.Drawing.Point(81, 66)
-        Me.Login.Name = "Login"
-        Me.Login.Size = New System.Drawing.Size(134, 20)
-        Me.Login.TabIndex = 16
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(32, 76)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(38, 13)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "Логин"
         '
         'Password
         '
-        Me.Password.Location = New System.Drawing.Point(81, 92)
+        Me.Password.Location = New System.Drawing.Point(81, 99)
         Me.Password.Name = "Password"
         Me.Password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.Password.Size = New System.Drawing.Size(134, 20)
         Me.Password.TabIndex = 16
         Me.Password.UseSystemPasswordChar = True
         '
-        'Label8
+        'Login
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(32, 69)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(38, 13)
-        Me.Label8.TabIndex = 17
-        Me.Label8.Text = "Логин"
+        Me.Login.Location = New System.Drawing.Point(81, 73)
+        Me.Login.Name = "Login"
+        Me.Login.Size = New System.Drawing.Size(134, 20)
+        Me.Login.TabIndex = 16
         '
-        'Label9
+        'RadioButtonUser2
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(32, 94)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(45, 13)
-        Me.Label9.TabIndex = 17
-        Me.Label9.Text = "Пароль"
+        Me.RadioButtonUser2.AutoSize = True
+        Me.RadioButtonUser2.Location = New System.Drawing.Point(17, 49)
+        Me.RadioButtonUser2.Name = "RadioButtonUser2"
+        Me.RadioButtonUser2.Size = New System.Drawing.Size(161, 17)
+        Me.RadioButtonUser2.TabIndex = 15
+        Me.RadioButtonUser2.TabStop = True
+        Me.RadioButtonUser2.Text = "Отдельной учетной записи"
+        Me.RadioButtonUser2.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -328,26 +330,45 @@ Partial Class ServiceParam
         Me.GroupBox2.Controls.Add(Me.PortMngr)
         Me.GroupBox2.Controls.Add(Me.PortProcessEnd)
         Me.GroupBox2.Controls.Add(Me.PortProcessBegin)
-        Me.GroupBox2.Location = New System.Drawing.Point(8, 123)
+        Me.GroupBox2.Location = New System.Drawing.Point(8, 161)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(261, 123)
         Me.GroupBox2.TabIndex = 18
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Рабочие порты"
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(7, 5)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(68, 13)
+        Me.Label7.TabIndex = 11
+        Me.Label7.Text = "Код службы"
+        '
+        'ServiceName
+        '
+        Me.ServiceName.BackColor = System.Drawing.SystemColors.Window
+        Me.ServiceName.Location = New System.Drawing.Point(5, 21)
+        Me.ServiceName.Name = "ServiceName"
+        Me.ServiceName.Size = New System.Drawing.Size(531, 20)
+        Me.ServiceName.TabIndex = 9
+        '
         'ServiceParam
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(543, 328)
+        Me.ClientSize = New System.Drawing.Size(543, 362)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.ButtonSave)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ServiceName)
         Me.Controls.Add(Me.DisplayName)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.ExeFile)
@@ -396,4 +417,6 @@ Partial Class ServiceParam
     Friend WithEvents Login As System.Windows.Forms.TextBox
     Friend WithEvents RadioButtonUser2 As System.Windows.Forms.RadioButton
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ServiceName As TextBox
 End Class
